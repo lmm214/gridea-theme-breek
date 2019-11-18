@@ -113,9 +113,7 @@
   
           var photos = document.querySelector('photos');
           if(photos){
-            $('img').on('load', function() {
               waterfall(photos);
-            });
           }
           
           $(window).resize(function() {
