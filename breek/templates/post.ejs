@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <%- include('./includes/head', { siteTitle: `${post.title} | ${themeConfig.siteName}` }) %>
+    <script src="<%= themeConfig.domain %>/media/js/waterfall.min.js"></script>
+    <script src="<%= themeConfig.domain %>/media/js/prism.min.js"></script>
+    <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+    <% } %>
+  </head>
+  <body>
+      <%- include('./includes/header') %>
+
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');">
+            <div class="meta top"> 
+              <time class="meta-info" datetime="<%= post.dateFormat %>">
+                <i class="fa fa-calendar"></i><%= post.dateFormat %>
+               </time>
+            </div>
+            <div class="info">
+              <div class="tags ">
+                <% post.tags.forEach(function(tag, tagIndex) { %>
+                      <a href="<%= tag.link %>" class="ctag ctag-<%= tagIndex %> ctag-<%= tag.slug %>" aria-label=""><%= tag.name %></a>
+                    <% }); %>
+              </div>
+              <h1 class="title ularge white bold"><%= post.title %></h1>
+            </div>
+          </div>
+        </div>  
+
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <%- post.content %>
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              <% if (post.prevPost) { %>
+              <article class="prev grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('<% if (post.prevPost.feature) { %><%= post.prevPost.feature %><% } else if (post.prevPost.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.prevPost.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');"></div>
+                 <a href="<%= post.prevPost.link %>" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="<%= post.prevPost.dateFormat %>"><%= post.prevPost.dateFormat %></time>
+                  <h4 class="title white no-margin"><%= post.prevPost.title %></h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="<%= themeConfig.domain %>/media/images/left-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              <% } %>
+              <% if (post.nextPost) { %>
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('<% if (post.nextPost.feature) { %><%= post.nextPost.feature %><% } else if (post.nextPost.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.nextPost.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');"></div>
+                 <a href="<%= post.nextPost.link %>" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="<%= post.nextPost.dateFormat %>"><%= post.nextPost.dateFormat %></time>
+                  <h4 class="title white no-margin"><%= post.nextPost.title %></h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="<%= themeConfig.domain %>/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              <% } %>
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+
+              <div id="comments" class="bg-white hosted ">
+
+              <% if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                  <%- include('./includes/gitalk') %>
+                <% } %>
+                <% if (commentSetting.commentPlatform === 'disqus') { %>
+                  <%- include('./includes/disqus') %>
+                <% } %>
+              <% } else if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                <%- include('./includes/valine') %>
+              <% } else { %>
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              <% } %>
+                <div class="clear"></div>
+              </div>
+
+              <div class="clear"></div>
+            </div>
+          </div>
+      </main>
+
+      <%- include('./includes/footer') %>
+
+
+      <script src="<%= themeConfig.domain %>/media/js/jquery.magnific-popup.min.js"></script>
+      <script type="text/javascript">
+       jQuery(document).ready(function($){
+        
+          $("photos img").each(function(){
+              var _a = $("<a></a>").attr("href",this.src);
+              $(this).wrap("<div class='photo'></div>").wrap(_a);
+          })
+  
+          var photos = document.querySelector('photos');
+          if(photos){
+            $('img').on('load', function() {
+              waterfall(photos);
+            });
+          }
+          
+          $(window).resize(function() {
+             if(photos){
+                  waterfall(photos);
+            }
+          });
+        
+      });
+      </script>
+
+    </div>
+    <!-- end: #wrapper -->
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<script type="text/javascript" src="https://cdn.staticfile.org/valine/1.3.10/Valine.Pure.min.js"></script>
+
+<script>
+    var valine = new Valine();
+    valine.init({
+        el: '#comments',
+        appId: '<%= site.customConfig.valineID %>' ,
+        appKey: '<%= site.customConfig.valineKey %>',
+        pageSize: 30,
+        placeholder: '既然来了，那就留个痕迹吧~'
+    })
+jQuery(document).ready(function($){
+    $('.vemoji-btn').text('😀');
+    $("#comments").on('click', 'span.vat',function(){
+        $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
+        $('textarea#veditor').focus();
+    })
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+            if ($(window.location.hash).length) {
+                $('html, body').animate({scrollTop: $(window.location.hash).offset().top-200}, 600);
+                clearInterval(checkExist);
+            }
+        }, 100);
+    }
+})
+</script>

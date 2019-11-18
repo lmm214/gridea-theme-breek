@@ -1,0 +1,37 @@
+      <header id="header" class="grid-container">
+        <!-- start: .menu-wrapper -->
+        <div class="menu-mobile"> 
+          <i class="fa fa-reorder"></i>
+        </div>
+        <div class="menu-wrapper">
+          <div class="">
+            <div class="logo">
+              <a href="<%= themeConfig.domain %>"><img src="<%= themeConfig.domain %>/media/images/logo.png" alt=""></a>
+            </div>
+            <!-- start: .main-nav -->
+
+            <nav class="main-nav grid-container grid-parent">
+              <ul id="menu-header" class="menu gradient-effect">
+                <% if (site.isHomepage) { %>
+                  <li class="current-menu-item"><a href="<%= themeConfig.domain %>" class="menu">首页</a></li>
+                <% } else{ %>
+                  <li class=""><a href="<%= themeConfig.domain %>" class="menu">首页</a></li>
+                <%} %>
+                <% menus.forEach(function(menu) { %>
+                  <li class="" >
+                    <a href="<%= menu.link %>" class="menu">
+                      <%= menu.name %>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </nav>
+            <!-- end: .main-nav -->
+            <div class="clear"></div>
+            <div class="border hide-on-tablet hide-on-mobile"></div>
+          </div>    
+          <div class="clear"></div>
+        </div>
+        <!-- end: .menu-wrapper -->
+        <div class="clear"></div>
+      </header>

@@ -1,0 +1,24 @@
+<% let years = []; posts.forEach((item) => { const year = item.date.substring(0, 4); if (!years.includes(year)) { years.push(year); } }); %>
+
+
+<div class="main-article post">
+<% years.forEach(function(year) { %>
+    <h2 class="year"><%- year %></h2>
+    <% posts.forEach(function(post) { %>
+      <%if (post.date.indexOf(year) !== -1) { %>
+      <article class="item default grid-33 tablet-grid-50 np-mobile">
+        <a href="<%= post.link %>" class="thumb hover-effect">
+          <span class="fullimage cover" style="display: block;background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');"></span>
+        </a>
+        <div class="info gradient-effect">
+          <time datetime="<%= post.dateFormat %>"><%= post.dateFormat %></time>
+          <h4 class="title usmall">
+            <a href="<%= post.link %>"><%= post.title %></a>
+          </h4>
+        </div>
+      </article>
+      <% } %>
+    <% }); %>
+    <div class="clear"></div>
+<% }); %>
+</div>

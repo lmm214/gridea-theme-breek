@@ -1,0 +1,63 @@
+    <footer id="footer" class="grid-container">
+        <div class="widgets row gradient-effect">
+            <div class="default-sidebar border-effect">
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_tag_cloud underline-effect">
+                  <h4 class="widget-title title white bordered">标签云</h4>
+                  <div class="tagcloud">
+                    <% site.tags.forEach(function(tag, tagIndex) { %>
+                      <a href="<%= tag.link %>" class="ctag ctag-<%= tagIndex %> ctag-<%= tag.slug %>" aria-label=""><%= tag.name %></a>
+                    <% }); %>
+                  </div>
+                  <div class="clear"></div>
+                </section>
+              </div>
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="epcl_about-2" class="widget widget_epcl_about underline-effect">
+                  <h4 class="widget-title title white bordered">关于我</h4>
+                  <div class="avatar">
+                    <a href="" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url(<%= themeConfig.domain %>/images/avatar.png);"></span></a>
+                  </div>
+                  <div class="info">
+                    <h4 class="title small author-name gradient-effect no-margin"><a href=""><%= themeConfig.siteName %></a></h4>
+                    <p class="founder"><%= themeConfig.siteDescription %></p>
+                    <div class="social">
+                      <% ['rss', 'twitter', 'github', 'zhihu', 'facebook','linkedin','telegram','douban','instagram','qq','weibo','youtube'].forEach((item) => { %>
+                            <% if (site.customConfig[item]) { %>  
+      <a href="<%= site.customConfig[item] %>" class="translate-effect" target="_blank"><i class="fa fa-<%= item %>"></i></a>
+                               <% } %>
+                         <% }) %>
+</div> 
+                  </div>
+                  <div class="clear"></div>
+                  </section>
+              </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="logo">
+          <a href="<%= themeConfig.domain %>"><img class="" src="<%= themeConfig.domain %>/media/images/logo.png" alt=""></a>
+        </div>
+        <p class="published border-effect">Published with <a href="https://gridea.dev/" target="_blank">Gridea</a></p>
+        
+        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark">
+          <i class="fa fa-arrow"></i>
+        </a>
+    </footer>
+    <div class="clear"></div>
+
+<script>
+jQuery(document).ready(function($){
+  var parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
+    var location_href = window.location.href.replace(parse_url,'$3');
+    $('.post-excerpt a:not(:has(img)),.post-content a:not(:has(img)),.author-name a').hover(function() {
+        var this_href = $(this).attr('href');
+        var replace_href = this_href.replace(parse_url,'$3');
+        if ( this_href != replace_href && location_href != replace_href){$(this).attr('target','_blank');}
+    });
+})
+</script>

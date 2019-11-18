@@ -1,0 +1,18 @@
+<div class="main-article post">
+  <h2 class="year"># <%= tag.name %></h2>
+    <% posts.forEach(function(post) { %>
+      <article class="item default grid-33 tablet-grid-50 np-mobile">
+        <a href="<%= post.link %>" class="thumb hover-effect">
+          <span class="fullimage cover" style="display: block;background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');"></span>
+        </a>
+        <div class="info gradient-effect">
+          <time datetime="<%= post.dateFormat %>"><%= post.dateFormat %></time>
+          <h4 class="title usmall">
+            <a href="<%= post.link %>"><%= post.title %></a>
+          </h4>
+        </div>
+      </article>
+
+    <% }); %>
+    <div class="clear"></div>
+</div>
