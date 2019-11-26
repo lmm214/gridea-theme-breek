@@ -24,12 +24,12 @@
                     <h4 class="title small author-name gradient-effect no-margin"><a href=""><%= themeConfig.siteName %></a></h4>
                     <p class="founder"><%= themeConfig.siteDescription %></p>
                     <div class="social">
-                      <% ['rss', 'twitter', 'github', 'zhihu', 'facebook','linkedin','telegram','douban','instagram','qq','weibo','youtube'].forEach((item) => { %>
-                            <% if (site.customConfig[item]) { %>  
-      <a href="<%= site.customConfig[item] %>" class="translate-effect" target="_blank"><i class="fa fa-<%= item %>"></i></a>
-                               <% } %>
-                         <% }) %>
-</div> 
+                      <% ['github','twitter','instagram' ,'telegram','feed'].forEach((item) => { %>
+                        <% if (site.customConfig[item]) { %>  
+                            <a href="<%= site.customConfig[item] %>" class="translate-effect" target="_blank"><i class="fa fa-<%= item %>"></i></a>
+                        <% } %>
+                      <% }) %>
+                    </div> 
                   </div>
                   <div class="clear"></div>
                   </section>

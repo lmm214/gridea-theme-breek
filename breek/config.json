@@ -1,6 +1,6 @@
 {
   "name": "breek",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "linmumu",
   "repository": "https://i.immmmm.com/post/gridea-theme-breek/",
   "customConfig": [
@@ -15,14 +15,6 @@
     {
       "name": "twitter",
       "label": "Twitter",
-      "group": "社交",
-      "value": "",
-      "type": "input",
-      "note": "链接地址"
-    },
-    {
-      "name": "weibo",
-      "label": "微博",
       "group": "社交",
       "value": "",
       "type": "input",
@@ -45,17 +37,34 @@
       "note": "链接地址"
     },
     {
-      "name": "facebook",
-      "label": "Facebook",
+      "name": "feed",
+      "label": "feed",
       "group": "社交",
       "value": "",
       "type": "input",
-      "note": "链接地址"
+      "note": "feed链接地址"
+    },
+    {
+      "name": "visitors",
+      "label": "阅读量统计",
+      "group": "Valine 评论配置",
+      "value": "false",
+      "type": "select",
+      "options": [
+        {
+          "label": "开启",
+          "value": true
+        },
+        {
+          "label": "关闭",
+          "value": false
+        }
+      ]
     },
     {
       "name": "valineID",
       "label": "appId",
-      "group": "valine",
+      "group": "Valine 评论配置",
       "value": "",
       "type": "input",
       "note": "请输入appId"
@@ -63,7 +72,7 @@
     {
       "name": "valineKey",
       "label": "appKey",
-      "group": "valine",
+      "group": "Valine 评论配置",
       "value": "",
       "type": "input",
       "note": "请输入appKey"

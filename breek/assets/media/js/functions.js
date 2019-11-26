@@ -33,6 +33,11 @@
     /* Dom Loaded */
 
 	$(document).ready(function($){
+
+        $.lately({
+            'target' : '.lately'
+        });
+
         var rtl = false;
         if( $('body').hasClass('rtl') ){
             rtl = true;
@@ -201,7 +206,7 @@
         });
 
         // Gutenberg Gallery with lightbox
-        $('.wp-block-gallery, .woocommerce-product-gallery,.post-content,.post-excerpt').each(function() {
+        $('.post-content,.post-excerpt').each(function() {
             var elem = $(this);
             elem.magnificPopup({
                 type: 'image',
@@ -225,7 +230,7 @@
                 arrowMarkup: '<i class="mfp-arrow mfp-arrow-%dir% fa fa-chevron-%dir%"></i>',
                 tCounter: '%curr% / %total%'
             },
-            delegate: "a[href$='.jpg'],a[href$='.png'],a[href$='.gif']",
+            delegate: "a[href$='.jpg'],a[href$='.jpeg'],a[href$='.png'],a[href$='.gif']",
             mainClass: 'my-mfp-zoom-in',
             removalDelay: 300,
             closeMarkup: '<span title="%title%" class="mfp-close">&times;</span>'

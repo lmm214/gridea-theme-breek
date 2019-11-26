@@ -7,8 +7,10 @@
         appId: '<%= site.customConfig.valineID %>' ,
         appKey: '<%= site.customConfig.valineKey %>',
         pageSize: 30,
-        placeholder: '既然来了，那就留个痕迹吧~'
+        placeholder: '既然来了，那就留个痕迹吧~',
+        visitor: <%= site.customConfig.visitors %> // 阅读量统计
     })
+
 jQuery(document).ready(function($){
     $('.vemoji-btn').text('😀');
     $("#comments").on('click', 'span.vat',function(){
