@@ -2,7 +2,7 @@
   <head>
     <%- include('./includes/head', { siteTitle: `${post.title} | ${themeConfig.siteName}` }) %>
     <script src="<%= themeConfig.domain %>/media/js/waterfall.min.js"></script>
-    <script src="https://cdn.staticfile.org/prism/1.17.1/prism.min.js"></script>
+    <script src="<%= themeConfig.domain %>/media/js/prism.min.js"></script>
     <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
     <% } %>
@@ -15,7 +15,7 @@
         <div class="center content">
           <div class="featured-image cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="<%= post.dateFormat %>"><i class="fa fa-calendar"></i><span class="lately"><%= post.dateFormat %></span></time>
+              <time class="meta-info" style="float:left;" datetime="<%= post.dateFormat %>"><i class="fa fa-calendar"></i><span class="lately"><%= site.utils.moment(post.date).locale('zh-cn').fromNow() %></span></time>
                
                <% if (site.customConfig.visitors){ %>
                <span id="/post/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info">
@@ -106,8 +106,6 @@
 
       <%- include('./includes/footer') %>
 
-
-      <script src="https://cdn.staticfile.org/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
       <script type="text/javascript">
        jQuery(document).ready(function($){
           $("photos img").each(function(){
@@ -115,7 +113,7 @@
               $(this).wrap("<div class='photo'></div>").wrap(_a);
           })
           $("figure img").each(function(){
-              var _b = $("<a class='wp-block-image'></a>").attr("href",this.src);
+              var _b = $("<a></a>").attr("href",this.src);
               $(this).wrap(_b);
           })
           isImgLoad(function(){

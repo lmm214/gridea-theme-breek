@@ -1,6 +1,28 @@
     <footer id="footer" class="grid-container">
         <div class="widgets row gradient-effect">
             <div class="default-sidebar border-effect">
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_epcl_posts_thumbs underline-effect">
+                  <h4 class="widget-title title white bordered">最新文章</h4>
+                  <% site.posts.forEach(function(post, index) { %>
+                  <% if (index < 3) { %>
+                  <article class="item post-<%= index %> post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="<%= post.link %>" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display: block;background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="<%= post.dateFormat %>"><%= post.dateFormat %></time>
+                      <h4 class="title usmall">
+                        <a href="<%= post.link %>"><%= post.title %></a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  <% } %>
+                  <% }); %>
+                  <div class="clear"></div>
+                </section>
+              </div>
 
               <div class="grid-33 tablet-grid-50 mobile-grid-100">
                 <section id="tag_cloud-2" class="widget widget_tag_cloud underline-effect">
@@ -42,22 +64,14 @@
         <div class="logo">
           <a href="<%= themeConfig.domain %>"><img class="" src="<%= themeConfig.domain %>/media/images/logo.png" alt=""></a>
         </div>
-        <p class="published border-effect">Published with <a href="https://gridea.dev/" target="_blank">Gridea</a></p>
+        <p class="published border-effect">
+          ©2019 共 <%= site.posts.length %> 篇文章
+          <br/>
+          Theme <a href="https://gridea.dev/" target="_blank">「<%= themeConfig.themeName %>」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
+        </p>
         
-        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark">
+        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark" style="display:none">
           <i class="fa fa-arrow"></i>
         </a>
     </footer>
     <div class="clear"></div>
-
-<script>
-jQuery(document).ready(function($){
-  var parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-    var location_href = window.location.href.replace(parse_url,'$3');
-    $('.post-excerpt a:not(:has(img)),.post-content a:not(:has(img)),.author-name a').hover(function() {
-        var this_href = $(this).attr('href');
-        var replace_href = this_href.replace(parse_url,'$3');
-        if ( this_href != replace_href && location_href != replace_href){$(this).attr('target','_blank');}
-    });
-})
-</script>

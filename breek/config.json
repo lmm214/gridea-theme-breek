@@ -1,81 +1,30 @@
 {
-  "name": "breek",
-  "version": "0.0.4",
+  "name": "Breek",
+  "version": "0.2.0",
   "author": "linmumu",
-  "repository": "https://i.immmmm.com/post/gridea-theme-breek/",
+  "repository": "https://i.immmmm.com/gridea-theme-breek/",
   "customConfig": [
-    {
-      "name": "github",
-      "label": "Github",
-      "group": "社交",
-      "value": "",
-      "type": "input",
-      "note": "链接地址"
-    },
-    {
-      "name": "twitter",
-      "label": "Twitter",
-      "group": "社交",
-      "value": "",
-      "type": "input",
-      "note": "链接地址"
-    },
-    {
-      "name": "instagram",
-      "label": "instagram",
-      "group": "社交",
-      "value": "",
-      "type": "input",
-      "note": "链接地址"
-    },
-    {
-      "name": "telegram",
-      "label": "telegram",
-      "group": "社交",
-      "value": "",
-      "type": "input",
-      "note": "链接地址"
-    },
-    {
-      "name": "feed",
-      "label": "feed",
-      "group": "社交",
-      "value": "",
-      "type": "input",
-      "note": "feed链接地址"
-    },
-    {
-      "name": "visitors",
-      "label": "阅读量统计",
-      "group": "Valine 评论配置",
-      "value": "false",
-      "type": "select",
+    {"name": "github","label": "Github","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "twitter","label": "Twitter","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "instagram","label": "instagram","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "telegram","label": "telegram","group": "社交","value": "","type": "input","note": "链接地址"},
+    {"name": "feed","label": "feed","group": "社交","value": "","type": "input","note": "feed链接地址"},
+    {"name": "visitors","label": "阅读量统计","group": "Valine 评论配置","value": "false","type": "select",
       "options": [
-        {
-          "label": "开启",
-          "value": true
-        },
-        {
-          "label": "关闭",
-          "value": false
-        }
+        {"label": "开启","value": true},
+        {"label": "关闭","value": false}
       ]
     },
-    {
-      "name": "valineID",
-      "label": "appId",
-      "group": "Valine 评论配置",
-      "value": "",
-      "type": "input",
-      "note": "请输入appId"
-    },
-    {
-      "name": "valineKey",
-      "label": "appKey",
-      "group": "Valine 评论配置",
-      "value": "",
-      "type": "input",
-      "note": "请输入appKey"
+    {"name": "valineID","label": "appId","group": "Valine 评论配置","value": "","type": "input","note": "请输入appId"},
+    {"name": "valineKey","label": "appKey","group": "Valine 评论配置","value": "","type": "input","note": "请输入appKey"},
+    {"name": "friends","label": "友链","group": "友链","type": "array","value": [],
+      "arrayItems": [
+        { "label": "名称", "name": "siteName", "type": "input", "value": "" },
+        { "label": "链接", "name": "siteLink", "type": "input", "value": "" },
+        { "label": "Logo（邮箱md5）", "name": "siteLogo", "type": "input", "value": "" },
+        { "label": "描述", "name": "description", "type": "textarea", "value": "" }
+      ],
+      "note": "Logo 使用邮箱md5，在线 https://tool.chinaz.com/tools/md5.aspx "
     }
   ]
 }

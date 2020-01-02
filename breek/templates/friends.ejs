@@ -1,6 +1,7 @@
 <html>
   <head>
-  <%- include('./includes/head', { siteTitle: `标签列表 | ${themeConfig.siteName}` }) %>
+  <%- include('./includes/head', { siteTitle: `我的朋友们 | ${themeConfig.siteName}` }) %>
+  <script type='text/javascript' src='<%= themeConfig.domain %>/media/js/md5.min.js'></script>
   </head>
   <body>
     <!-- start: #wrapper -->
@@ -8,14 +9,14 @@
       
       <%- include('./includes/header') %>
 
-      <main id="tags" class="main fullcover no-sidebar content">
+      <main id="friends" class="main fullcover no-sidebar content">
         <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
         <div class="epcl-page-wrapper">
           <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
 
           <div class="widget_tag_cloud tagcloud">
-            <% site.tags.forEach(function(tag, tagIndex) { %>
-              <a href="<%= tag.link %>" class="ctag ctag-<%= tagIndex %> ctag-<%= tag.slug %>" aria-label=""><%= tag.name %></a>
+            <% site.customConfig.friends.forEach(function(friend, tagIndex) { %>
+              <a href="<%= friend.siteLink %>" class="ctag ctag-<%= tagIndex %>"><img src="https://gravatar.loli.net/avatar/<%= friend.siteLogo %>"><%= friend.siteName %></a>
             <% }); %>
           </div>
         </div>

@@ -7,19 +7,8 @@
   height: 0;
 }
 
-@media screen and (max-width: 400px) {
-  @-ms-viewport {
-    width: 320px;
-  }
-}
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
+#home div.fullcover {display: block;margin: 0 20px;}
+
 .grid-container:before,
 .grid-5:before,
 .mobile-grid-5:before,
@@ -2511,6 +2500,24 @@ form.search-form .submit:hover {
   margin-left: 2px;
 }
 
+#friends .widget_tag_cloud a {
+  height: 42px;
+  position: relative;
+  line-height: 42px;
+  color: #fff;
+  font-size: 18px !important;
+  padding: 4px 30px 4px 60px;
+}
+
+#friends .widget_tag_cloud a img{
+  border-radius: 50%;
+  position: absolute;
+  transition: all 300ms ease;
+  width: 42px;
+  height: 42px;
+  left: 5px;
+}
+
 #footer .widget_tag_cloud a,#tags .widget_tag_cloud a {
   color: #fff;
   font-size: 15px !important;
@@ -3421,7 +3428,7 @@ div.text div.ep-map img, div.text div#map_canvas img {
   height: inherit;
 }
 
-div.text img {
+div.text img, div.text video{
   max-width: 100%;
   height: auto;
   border-radius: 7px;
@@ -6577,7 +6584,11 @@ div.epcl-share a.vk {
   .grid-sidebar div.left-content, .classic div.left-content {
     margin: 0 -20px;
   }
-  div.articles {
+  #home div.fullcover{
+    display: block;
+    margin: 0 20px 40px;
+  }
+  div.articles{
     display: block;
     margin: 0 20px;
   }
@@ -9168,5 +9179,3 @@ photos .photo:last-child{margin-right:0px;}
 @media screen and (min-width: 800px) {
   photos .photo{width:360px;margin-right:16px;margin-bottom:10px;float:left;}
 }
-
-
