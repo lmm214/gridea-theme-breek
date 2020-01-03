@@ -15,9 +15,11 @@
           <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
 
           <div class="widget_tag_cloud tagcloud">
+          <% if (site.customConfig.friends) { %>
             <% site.customConfig.friends.forEach(function(friend, tagIndex) { %>
               <a href="<%= friend.siteLink %>" class="ctag ctag-<%= tagIndex %>"><img src="https://gravatar.loli.net/avatar/<%= friend.siteLogo %>"><%= friend.siteName %></a>
             <% }); %>
+          <% } %>
           </div>
         </div>
 
