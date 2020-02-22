@@ -1,11 +1,11 @@
 <html>
   <head>
     <%- include('./includes/head', { siteTitle: `${post.title} | ${themeConfig.siteName}` }) %>
+    <meta name="referrer" content="never">
+    <meta name="description" content="<%- post.description %>" />
+    <meta name="keywords" content="<%- post.tags.map(tag => tag.name).join(',') %>" />
     <script src="<%= themeConfig.domain %>/media/js/waterfall.min.js"></script>
     <script src="<%= themeConfig.domain %>/media/js/prism.min.js"></script>
-    <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
-    <% } %>
   </head>
   <body>
       <%- include('./includes/header') %>
@@ -13,15 +13,15 @@
       <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
 
         <div class="center content">
-          <div class="featured-image cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');">
+          <div class="featured-image cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');">
             <div class="meta top"> 
               <time class="meta-info" style="float:left;" datetime="<%= post.dateFormat %>"><i class="fa fa-calendar"></i><span class="lately"><%= site.utils.moment(post.date).locale('zh-cn').fromNow() %></span></time>
-               
-               <% if (site.customConfig.visitors){ %>
-               <span id="/post/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info">
-                <i class="fa fa-leancloud"></i><span class="leancloud-visitors-count" style="vertical-align: middle;">0</span>
-               </span>
-               <% } %>
+              <% if (site.customConfig.visitors){ %>
+              <a href="<%= post.link %>#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/<%= post.fileName %>/"> </span>
+              </a>
+              <span id="/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              <% } %>
             </div>
             <div class="info">
               <div class="tags ">
@@ -80,74 +80,34 @@
             </section>
 
               <div class="clear"></div>
-
+              
+            <% if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
               <div id="comments" class="bg-white hosted ">
-
-              <% if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
                 <% if (commentSetting.commentPlatform === 'gitalk') { %>
                   <%- include('./includes/gitalk') %>
                 <% } %>
                 <% if (commentSetting.commentPlatform === 'disqus') { %>
                   <%- include('./includes/disqus') %>
                 <% } %>
-              <% } else if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                <%- include('./includes/valine') %>
-                <div class="clear"></div>
-              <% } else { %>
-                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-              <% } %>
-                <div class="clear"></div>
               </div>
-
+            <% } else if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+              <div id="comments" class="bg-white hosted ">
+                <%- include('./includes/valine') %>
+              </div>
+            <% } else { %>
+              <div id="comments" class="bg-white hosted ">
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+              </div>
               <div class="clear"></div>
+            <% } %>
+
             </div>
           </div>
       </main>
 
       <%- include('./includes/footer') %>
-
-      <script type="text/javascript">
-       jQuery(document).ready(function($){
-          $("photos img").each(function(){
-              var _a = $("<a></a>").attr("href",this.src);
-              $(this).wrap("<div class='photo'></div>").wrap(_a);
-          })
-          $("figure img").each(function(){
-              var _b = $("<a></a>").attr("href",this.src);
-              $(this).wrap(_b);
-          })
-          isImgLoad(function(){
-            var photos = document.querySelector('photos');
-            if(photos){
-              waterfall(photos);
-            }
-            $(window).resize(function() {
-             if(photos){
-                  waterfall(photos);
-            }
-          });
-        });
-        var t_img;
-        var isLoad = true;
-        function isImgLoad(callback){
-          $('photos img').each(function(){
-            if(this.height === 0){
-              isLoad = false;
-              return false;
-            }
-          });
-          if(isLoad){
-            clearTimeout(t_img);
-            callback();
-          }else{
-            isLoad = true;
-            t_img = setTimeout(function(){
-              isImgLoad(callback);
-            },500);
-          }
-        }
-      });
-      </script>
+      
+    <script src="<%= themeConfig.domain %>/media/js/functions-post.js"></script>
 
     </div>
     <!-- end: #wrapper -->

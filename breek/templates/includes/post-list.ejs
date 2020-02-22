@@ -3,7 +3,7 @@
     <% posts.forEach(function(post) { %>
       <article class="item default grid-33 tablet-grid-50 np-mobile">
         <a href="<%= post.link %>" class="thumb hover-effect">
-          <span class="fullimage cover" style="display: block;background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');"></span>
+          <span class="fullimage cover" style="display: block;background-image: url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');"></span>
         </a>
         <div class="info gradient-effect">
           <time datetime="<%= post.dateFormat %>"><%= post.dateFormat %></time>

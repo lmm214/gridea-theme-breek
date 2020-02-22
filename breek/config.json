@@ -1,9 +1,14 @@
 {
   "name": "Breek",
-  "version": "0.2.0",
+  "version": "0.3",
   "author": "linmumu",
   "repository": "https://i.immmmm.com/gridea-theme-breek/",
   "customConfig": [
+    {"name": "pageBgColor","label": "网页背景色","group": "自定义样式","value": "","type": "input","note": "默认为 background: fixed linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);"},
+    {"name": "customCss","label": "自定义CSS","group": "自定义样式","value": "","type": "textarea","note": "自定义标签背景色格式 a.ctag-le-gao{background-color: #e54d42 !important}"},
+    {"name": "headerLogo","label": "头部Logo","group": "图片","value": "/media/images/logoo.png","type": "picture-upload","note": ""},
+    {"name": "footerLogo","label": "页脚Logo","group": "图片","value": "/media/images/gridea.png","type": "picture-upload","note": ""},
+    {"name": "featureImage","label": "默认缩略图","group": "图片","value": "/media/images/gridea.jpg","type": "picture-upload","note": ""},
     {"name": "github","label": "Github","group": "社交","value": "","type": "input","note": "链接地址"},
     {"name": "twitter","label": "Twitter","group": "社交","value": "","type": "input","note": "链接地址"},
     {"name": "instagram","label": "instagram","group": "社交","value": "","type": "input","note": "链接地址"},

@@ -6,17 +6,13 @@
         <div class="menu-wrapper">
           <div class="">
             <div class="logo">
-              <a href="<%= themeConfig.domain %>"><img src="<%= themeConfig.domain %>/media/images/logoo.png" alt=""></a>
+              <a href="<%= themeConfig.domain %>"><img src="<%= site.customConfig.headerLogo %>" alt=""></a>
             </div>
             <!-- start: .main-nav -->
 
             <nav class="main-nav grid-container grid-parent">
               <ul id="menu-header" class="menu gradient-effect">
-                <% if (site.isHomepage) { %>
-                  <li class="current-menu-item"><a href="<%= themeConfig.domain %>" class="menu">首页</a></li>
-                <% } else{ %>
-                  <li class=""><a href="<%= themeConfig.domain %>" class="menu">首页</a></li>
-                <%} %>
+                <li class="<% if (site.isHomepage) { %>current-menu-item<% } %>"><a href="<%= themeConfig.domain %>" class="menu">首页</a></li>
                 <% menus.forEach(function(menu) { %>
                   <li class="" >
                     <a href="<%= menu.link %>" class="menu">
@@ -24,8 +20,10 @@
                     </a>
                   </li>
                 <% }); %>
+                <li class="search-menu-item hide-on-mobile hide-on-tablet"><a href="#search-lightbox" class="lightbox mfp-inline"><i class="fa fa-search-line"></i></a></li>
               </ul>
             </nav>
+            <a href="#search-lightbox" class="lightbox epcl-search-button mfp-inline hide-on-tablet hide-on-desktop"><i class="fa fa-search-line"></i></a>
             <!-- end: .main-nav -->
             <div class="clear"></div>
             <div class="border hide-on-tablet hide-on-mobile"></div>
@@ -35,3 +33,15 @@
         <!-- end: .menu-wrapper -->
         <div class="clear"></div>
       </header>
+      <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
+        <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
+          <div class="search-wrapper section">
+            <form id="gridea-search-form" data-update="<%=site.utils.now%>" action="/search/index.html" class="search-form" _lpchecked="1">
+              <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
+              <button type="submit" class="submit" aria-label="Submit">
+                <i class="fa fa-search-line"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>

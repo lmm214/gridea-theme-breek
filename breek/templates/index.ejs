@@ -18,9 +18,15 @@
               <% posts.forEach(function(post, postIndex) { %>
               <% if ( post.isTop && postIndex == 0) { %>
                 <div id="single" class="fullcover" style="">
-                   <div class="featured-image cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');">
+                   <div class="featured-image cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');">
                     <div class="meta top"> 
                       <time class="meta-info" style="float:left;" datetime="<%= post.dateFormat %>"><i class="fa fa-calendar"></i><span class="lately"><%= site.utils.moment(post.date).locale('zh-cn').fromNow() %></span></time>
+                      <% if (site.customConfig.visitors){ %>
+                      <a href="<%= post.link %>#comments" class="comments meta-info" title="">
+                        <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/<%= post.fileName %>/"> </span>
+                      </a>
+                      <span id="/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+                      <% } %>
                     </div>
                     <div class="info">
                       <div class="tags ">
@@ -35,7 +41,7 @@
               <% if ( postIndex == 0) { %><div class="articles columns-3"><% } %>
                 <% if ( !post.abstract ) { %>
                 <article class="bgstyle grid-33 tablet-grid-50 mobile-grid-100 np-mobile post type-post status-publish format-standard has-post-thumbnail hentry" style="">
-                  <div class="article-wrapper  cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');">
+                  <div class="article-wrapper  cover" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');">
                   <header>
                     <% if (post.tags[0]) { %>
                       <div class="tags absolute">
@@ -53,9 +59,12 @@
                       <span class="author-image cover" style="background-image: url('<%= themeConfig.domain %>/images/avatar.png');"></span>
                       <span class="author-name"><%= themeConfig.siteName %></span>
                     </a>
+                    <% if (site.customConfig.visitors){ %>
                     <a href="<%= post.link %>#comments" class="comments meta-info alignright" title="">
-                      <i class="fa fa-comment"></i>
+                      <span class="comment-count valine-comment-count" data-xid="/<%= post.fileName %>/"> </span><i class="fa fa-comment"></i>
                     </a>
+                    <div id="/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info alignright" title=""><span class="leancloud-visitors-count" style="vertical-align: middle;"></span><i class="fa fa-leancloud"></i></div>
+                    <% } %>
                     <div class="clear"></div>
                   </footer>
                   <div class="overlay"></div>       
@@ -68,7 +77,7 @@
                     <div class="post-format-image post-format-wrapper">
                       <div class="featured-image">
                         <a href="<%= post.link %>" class="thumb hover-effect">
-                          <span class="fullimage cover" role="img" aria-label="" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else if (post.tags[0]) { %><%= themeConfig.domain %>/media/images/<%= post.tags[0].slug %>.jpg<% } else { %><%= themeConfig.domain %>/media/images/gridea.jpg<%} %>');"></span>
+                          <span class="fullimage cover" role="img" aria-label="" style="background-image: url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');"></span>
                         </a>
                         <% if (post.tags[0]) { %>
                         <div class="tags absolute">
@@ -95,9 +104,12 @@
                       <span class="author-image cover" style="background-image: url('<%= themeConfig.domain %>/images/avatar.png');"></span>
                       <span class="author-name"><%= themeConfig.siteName %></span>
                     </a>
+                    <% if (site.customConfig.visitors){ %>
                     <a href="<%= post.link %>#comments" class="comments meta-info alignright" title="">
-                      <i class="fa fa-comment"></i>
+                      <span class="comment-count valine-comment-count" data-xid="/<%= post.fileName %>/"> </span><i class="fa fa-comment"></i>
                     </a>
+                    <div id="/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info alignright" title=""><span class="leancloud-visitors-count" style="vertical-align: middle;"></span><i class="fa fa-leancloud"></i></div>
+                    <% } %>
                     <div class="clear"></div>
                   </footer>
                   <div class="border"></div>       

@@ -71,6 +71,12 @@
             });
 		}
 
+        $('.lightbox').magnificPopup({
+            mainClass: 'my-mfp-zoom-in',
+            removalDelay: 300,
+            closeMarkup: '<i title="%title%" class="mfp-close fa fa-times"></i>',
+            fixedContentPos: true
+        });
 
         // Custom Select and filters
 		$('#header div.menu-mobile').on('click', function(){

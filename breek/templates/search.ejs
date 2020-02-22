@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <%- include('./includes/head', { siteTitle: `搜索结果 | ${themeConfig.siteName}` }) %>
+    <script src="/media/gridea-search/fuse.js"></script>
+    <script src="/media/gridea-search/ejs.min.js"></script>
+    <script src="/media/gridea-search/gridea-search.js"></script>
+    <script src="/media/gridea-search/result-template.ejs" type="text/ejs"></script>
+</head>
+
+  <body>
+    <!-- start: #wrapper -->
+    <div class="wrapper">
+      
+      <%- include('./includes/header') %>
+
+      <main id="home" class="main fullcover no-sidebar content">
+        <div class="grid-container module-wrapper enable-masonry aos-init aos-animate" data-aos="fade-up">
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile widget_epcl_related_articles">
+          <div class="main-article post">
+            <div id="gridea-search-result">
+              <h2 class="searching">搜索中......</h2>
+              <h2 class="no-result" style="display:none">未搜索到相关文章</h2>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+      </main>
+
+    <%- include('./includes/footer') %>
+    </div>
+    <!-- end: #wrapper -->
+  </body>
+</html>

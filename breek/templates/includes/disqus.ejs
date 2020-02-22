@@ -1,10 +1,10 @@
-<link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
-<script src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+<!-- jsDelivr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqusjs.css">
+<script src="https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqus.js"></script>
 
 <div id="disqus_thread"></div>
-
+<div class="clear"></div>
 <script>
-
 var options = {
   shortname: '<%= commentSetting.disqusSetting.shortname %>',
   apikey: '<%= commentSetting.disqusSetting.apikey %>',
@@ -13,5 +13,4 @@ if ('<%= commentSetting.disqusSetting.api %>') {
   options.api = '<%= commentSetting.disqusSetting.api %>'
 }
 var dsqjs = new DisqusJS(options)
-
 </script>
