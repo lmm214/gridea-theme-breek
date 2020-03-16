@@ -2,7 +2,7 @@
     <% posts.forEach(function(post) { %>
       <article class="item default grid-33 tablet-grid-50 np-mobile">
         <a href="<%= post.link %>" class="thumb hover-effect">
-          <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= site.customConfig.featureImage %><%} %>');"></span>
+          <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('<% if (post.feature) { %><%= post.feature %><% } else { %><%= customConfig.featureImage %><%} %>');"></span>
         </a>
         <div class="info gradient-effect">
           <time datetime="<%= post.dateFormat %>"><%= post.dateFormat %></time>
