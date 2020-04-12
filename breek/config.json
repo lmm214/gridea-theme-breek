@@ -1,9 +1,17 @@
 {
   "name": "Breek",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "linmumu",
   "repository": "https://i.immmmm.com/gridea-theme-breek/",
   "customConfig": [
+    {"name": "jsdelivr","label": "jsDelivr 加速","group": "jsDelivr 加速配置","value": "false","type": "select",
+      "options": [
+        {"label": "开启","value": true},
+        {"label": "关闭","value": false}
+      ]
+    },
+    {"name": "username","label": "Github 用户名","group": "jsDelivr 加速配置","value": "","type": "input","note": "请输入 Github 用户名"},
+    {"name": "repository","label": "Github 仓库名","group": "jsDelivr 加速配置","value": "","type": "input","note": "请输入 Github 仓库名"},
     {"name": "pageBgColor","label": "网页背景色","group": "自定义样式","value": "","type": "input","note": "默认为 background: fixed linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);"},
     {"name": "customCss","label": "自定义CSS","group": "自定义样式","value": "","type": "textarea","note": "自定义标签背景色格式 a.ctag-le-gao{background-color: #e54d42 !important}"},
     {"name": "headerLogo","label": "头部Logo","group": "图片","value": "/media/images/logoo.png","type": "picture-upload","note": ""},
@@ -20,6 +28,7 @@
         {"label": "关闭","value": false}
       ]
     },
+    {"name": "bmdbSecret","label": "secret","group": "豆瓣书影单","value": "","type": "input","note": "secret 可以在前往 https://bm.weajs.com/ 注册获取"},
     {"name": "valineID","label": "appId","group": "Valine 评论配置","value": "","type": "input","note": "请输入appId"},
     {"name": "valineKey","label": "appKey","group": "Valine 评论配置","value": "","type": "input","note": "请输入appKey"},
     {"name": "friends","label": "友链","group": "友链","type": "array","value": [],
