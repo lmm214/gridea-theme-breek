@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
   <head>
     <%- include('./includes/head', { siteTitle: `我的观影 | ${themeConfig.siteName}` }) %>
@@ -23,7 +24,7 @@
     new Bmdb({
       type: 'movies',
       selector: '.section-content',
-      secret: '0bba46738324c778ad2da662837c14d2c1e5bceb22e3729febc9fd3677bdcea5',
+      secret: '<%= site.customConfig.bmdbSecret %>',
       noMoreText: '没有更多数据了',
       limit: 30
     })
