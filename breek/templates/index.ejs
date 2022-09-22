@@ -23,9 +23,9 @@
                       <time class="meta-info" style="float:left;" datetime="<%= post.dateFormat %>"><i class="fa fa-calendar"></i><span class="lately"><%= site.utils.moment(post.date).locale('zh-cn').fromNow() %></span></time>
                       <% if (site.customConfig.visitors){ %>
                       <a href="<%= post.link %>#comments" class="comments meta-info" title="">
-                        <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/<%= post.fileName %>/"> </span>
+                        <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/post/<%= post.fileName %>/"> </span>
                       </a>
-                      <span id="/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+                      <span id="/post/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
                       <% } %>
                     </div>
                     <div class="info">
@@ -61,9 +61,9 @@
                     </a>
                     <% if (site.customConfig.visitors){ %>
                     <a href="<%= post.link %>#comments" class="comments meta-info alignright" title="">
-                      <span class="comment-count valine-comment-count" data-xid="/<%= post.fileName %>/"> </span><i class="fa fa-comment"></i>
+                      <span class="comment-count valine-comment-count" data-xid="/post/<%= post.fileName %>/"> </span><i class="fa fa-comment"></i>
                     </a>
-                    <div id="/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info alignright" title=""><span class="leancloud-visitors-count" style="vertical-align: middle;"></span><i class="fa fa-leancloud"></i></div>
+                    <div id="/post/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info alignright" title=""><span class="leancloud-visitors-count" style="vertical-align: middle;"></span><i class="fa fa-leancloud"></i></div>
                     <% } %>
                     <div class="clear"></div>
                   </footer>
@@ -106,9 +106,9 @@
                     </a>
                     <% if (site.customConfig.visitors){ %>
                     <a href="<%= post.link %>#comments" class="comments meta-info alignright" title="">
-                      <span class="comment-count valine-comment-count" data-xid="/<%= post.fileName %>/"> </span><i class="fa fa-comment"></i>
+                      <span class="comment-count valine-comment-count" data-xid="/post/<%= post.fileName %>/"> </span><i class="fa fa-comment"></i>
                     </a>
-                    <div id="/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info alignright" title=""><span class="leancloud-visitors-count" style="vertical-align: middle;"></span><i class="fa fa-leancloud"></i></div>
+                    <div id="/post/<%= post.fileName %>/" class="leancloud_visitors views-counter meta-info alignright" title=""><span class="leancloud-visitors-count" style="vertical-align: middle;"></span><i class="fa fa-leancloud"></i></div>
                     <% } %>
                     <div class="clear"></div>
                   </footer>
